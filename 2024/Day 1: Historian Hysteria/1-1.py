@@ -1,5 +1,5 @@
-with open('1-1.txt', 'r') as file:
-    data = file.read()
+with open("1.txt", 'r') as file:
+        data = file.read()
 
 lines = data.splitlines()
 rows = [tuple(map(int, line.split())) for line in lines]
@@ -7,11 +7,9 @@ rows = [tuple(map(int, line.split())) for line in lines]
 sorted_by_first = sorted(rows, key=lambda x: x[0])
 sorted_by_second = sorted(rows, key=lambda x: x[1])
 
-summ = 0
-i = 0
-while i < len(rows):
+total_distance = 0
+for i in range(len(rows)):
     print(sorted_by_first[i][0], sorted_by_second[i][1])
-    summ += abs(sorted_by_first[i][0] - sorted_by_second[i][1])
-    i+=1
+    total_distance += abs(sorted_by_first[i][0] - sorted_by_second[i][1])
 
-print(summ)
+print(total_distance)

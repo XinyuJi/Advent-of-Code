@@ -11,7 +11,6 @@ def is_valid(sequence):
     )
 
 check = 0
-j = 0
 for j in range(len(rows)):
     row = rows[j]
     print(row)
