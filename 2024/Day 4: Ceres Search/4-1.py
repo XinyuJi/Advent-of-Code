@@ -3,16 +3,7 @@ with open('test.txt', 'r') as file:
 map = data.splitlines()
 
 word = "XMAS"
-directions = [
-    (0, 1),    # Right
-    (0, -1),   # Left
-    (1, 0),    # Down
-    (-1, 0),   # Up
-    (1, 1),    # Down-Right
-    (-1, -1),  # Up-Left
-    (1, -1),   # Down-Left
-    (-1, 1)    # Up-Right
-]
+directions = [(0, 1),(0, -1),(1, 0),(-1, 0),(1, 1),(-1, -1),(1, -1),(-1, 1)]
 
 result = []
 for row in range(len(map)):
