@@ -14,7 +14,6 @@ directions = [
     (-1, 1)    # Up-Right
 ]
 
-
 result = []
 for row in range(len(map)):
     for col in range(len(map[0])):

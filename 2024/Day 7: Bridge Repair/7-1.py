@@ -28,5 +28,4 @@ total = 0
 for target, nums in data_dict.items():
     if can_form_target(target, nums):
         total += target
-    # print(f"{target}: {result}")
 print(total)
