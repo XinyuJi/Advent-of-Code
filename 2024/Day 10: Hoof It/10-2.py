@@ -14,7 +14,7 @@ def find_start_points(map, rows, cols):
                 start_points.append((row, col))
     return start_points
 
-def bfs(map, start, rows, cols):
+def bfs_hiking_trails(map, start, rows, cols):
     queue = deque([(start, "0")])
     paths = 0
     visited = set()
@@ -38,5 +38,5 @@ rows, cols = len(map), len(map[0])
 start_points = find_start_points(map, rows, cols)
 
 for start in start_points:
-    ratings += bfs(map, start, rows, cols)
+    ratings += bfs_hiking_trails(map, start, rows, cols)
 print(f"Sum of the ratings of all trailheads: {ratings}")
