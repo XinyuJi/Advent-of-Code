@@ -1,6 +1,6 @@
 from functools import cmp_to_key
 
-with open('test.txt', 'r') as file:
+with open('5.txt', 'r') as file:
     data = file.read()
 rules, inputs = data.strip().split("\n\n")
 

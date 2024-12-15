@@ -21,7 +21,7 @@ def stone_blink(input):
     return new_list
 
 def process_iterations(input, times):
-    for i in range(times):
+    for _ in range(times):
         input = stone_blink(input)
     return input
 

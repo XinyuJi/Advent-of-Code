@@ -4,16 +4,17 @@ with open('4.txt', 'r') as file:
     data = file.read()
 map = data.splitlines()
 
-def find_start_point(map, rows, cols):
-    start = []
+directions = [((-1, -1),((-1, 1))),((1, 1),(1, -1))]
+
+def find_start_points(map, rows, cols):
+    start_points = []
     for row in range(rows):
         for col in range(cols):
             if map[row][col] == "A":
-                start.append((row, col))
-    return start
+                start_points.append((row, col))
+    return start_points
 
 def bfs_find_x_shapes(grid, start, rows, cols):
-    directions = [((-1, -1),((-1, 1))),((1, 1),(1, -1))]
     x, y = start
     count = 0
     path1, path2 = "", ""
@@ -27,7 +28,6 @@ def bfs_find_x_shapes(grid, start, rows, cols):
         if 0 <= nx1 < rows and 0 <= ny1 < cols:
             path1 += grid[nx1][ny1]
             positions1.append((nx1, ny1))
-
         if 0 <= nx2 < rows and 0 <= ny2 < cols:
             path2 += grid[nx2][ny2]
             positions2.append((nx2, ny2))
@@ -37,9 +37,9 @@ def bfs_find_x_shapes(grid, start, rows, cols):
     return count
 
 rows, cols = len(map), len(map[0])
-start = find_start_point(map, rows, cols)
+start_points = find_start_points(map, rows, cols)
 
 total = 0
-for i in start:
-    total += bfs_find_x_shapes(map, i, rows, cols)
+for start in start_points:
+    total += bfs_find_x_shapes(map, start, rows, cols)
 print(f"Total Xmas found: {total}")

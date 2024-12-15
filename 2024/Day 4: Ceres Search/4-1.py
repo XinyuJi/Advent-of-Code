@@ -4,23 +4,22 @@ with open('4.txt', 'r') as file:
     data = file.read()
 map = data.splitlines()
 
-def find_start_point(map, rows, cols):
-    start = []
+word = "XMAS"
+directions = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+
+def find_start_points(map, rows, cols):
+    start_points = []
     for row in range(rows):
         for col in range(cols):
             if map[row][col] == "X":
-                start.append((row, col))
-    return start
+                start_points.append((row, col))
+    return start_points
 
-def bfs(map, start, rows, cols):
+def bfs_find_xmas(map, start, rows, cols):
     count_xmas = 0
-    word = "XMAS"
-    directions = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
-
     for dx, dy in directions:
         queue = deque([(start, 0, [start])])
         visited = set()
-
         while queue:
             (cx, cy), idx, path = queue.popleft()
             if idx == len(word):
@@ -37,9 +36,9 @@ def bfs(map, start, rows, cols):
     return count_xmas
 
 rows, cols = len(map), len(map[0])
-start = find_start_point(map, rows, cols)
+start_points = find_start_points(map, rows, cols)
 
 total = 0
-for i in start:
-    total += bfs(map, i, rows, cols)
+for start in start_points:
+    total += bfs_find_xmas(map, start, rows, cols)
 print(f"Total Xmas found: {total}")

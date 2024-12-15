@@ -52,8 +52,8 @@ def mark_antinodes(map, antinodes, antennas):
     return ["".join(row) for row in map], count
 
 antennas = extract_antennas(map)
-row, col = len(map[0]), len(map)
-antinodes = find_antinodes(antennas, row, col)
+rows, cols = len(map), len(map[0])
+antinodes = find_antinodes(antennas, rows, cols)
 new_map, antinode_count = mark_antinodes(map, antinodes, antennas)
 
 print(f"Number of antinodes: {antinode_count}")

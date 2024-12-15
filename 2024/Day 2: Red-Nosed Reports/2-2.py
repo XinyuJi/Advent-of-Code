@@ -10,14 +10,10 @@ def is_valid(sequence):
     )
 
 check = 0
-for j in range(len(rows)):
-    row = rows[j]
+for row in rows:
     if is_valid(row):
         check += 1
-        continue
-    for i in range(len(row)):
-        modified_row = row[:i] + row[i+1:]
-        if is_valid(modified_row):
-            check +=1
-            break
+    else:
+        if any(is_valid(row[:i] + row[i+1:]) for i in range(len(row))):
+            check += 1
 print(check)

@@ -4,19 +4,20 @@ with open('10.txt', 'r') as file:
     data = file.read()
 map = data.splitlines()
 
-def find_bfs_start(map, rows, cols):
-    start = []
+directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+def find_start_points(map, rows, cols):
+    start_points = []
     for row in range(rows):
         for col in range(cols):
             if "0" == map[row][col]:
-                start.append((row, col))
-    return start
+                start_points.append((row, col))
+    return start_points
 
-def bfs(map, start_index, rows, cols):
-    queue = deque([(start_index, "0")])
+def bfs(map, start, rows, cols):
+    queue = deque([(start, "0")])
     paths = 0
     visited = set()
-
     while queue:
         (cx, cy), current_path = queue.popleft()
         visited.add((cx, cy))
@@ -24,7 +25,7 @@ def bfs(map, start_index, rows, cols):
             paths += 1
             continue
 
-        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+        for dx, dy in directions:
             nx, ny = cx + dx, cy + dy
             if 0 <= nx < rows and 0 <= ny < cols and (nx, ny) not in visited:
                 next_value = map[nx][ny]
@@ -32,10 +33,10 @@ def bfs(map, start_index, rows, cols):
                     queue.append(((nx, ny), current_path + next_value))
     return paths
 
-final_paths = 0
+ratings = 0
 rows, cols = len(map), len(map[0])
-start = find_bfs_start(map, rows, cols)
+start_points = find_start_points(map, rows, cols)
 
-for i in start:
-    final_paths += bfs(map, i, rows, cols)
-print(f"Total paths found: {final_paths}")
+for start in start_points:
+    ratings += bfs(map, start, rows, cols)
+print(f"Sum of the ratings of all trailheads: {ratings}")

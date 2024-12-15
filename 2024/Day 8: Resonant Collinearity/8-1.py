@@ -12,7 +12,7 @@ def extract_antennas(map):
                 antennas[col].append((x, y))
     return antennas
 
-def find_antinodes(antennas, row, col):
+def find_antinodes(antennas, rows, cols):
     antinodes = set()
     for ante, pos in antennas.items():
         num_ante = len(pos)
@@ -24,7 +24,7 @@ def find_antinodes(antennas, row, col):
                 ax, ay = x1 - dx, y1 - dy
                 bx, by = x2 + dx, y2 + dy
                 for (qx, qy) in [(ax, ay), (bx, by)]:
-                    if 0 <= qx < row and 0 <= qy < col:
+                    if 0 <= qx < rows and 0 <= qy < cols:
                         antinodes.add((qx, qy))
     return antinodes
 
@@ -39,8 +39,8 @@ def mark_antinodes(map, antinodes, antennas):
     return ["".join(row) for row in map], count
 
 antennas = extract_antennas(map)
-row, col = len(map[0]), len(map)
-antinodes = find_antinodes(antennas, row, col)
+rows, cols = len(map), len(map[0])
+antinodes = find_antinodes(antennas, rows, cols)
 new_map, antinode_count = mark_antinodes(map, antinodes, antennas)
 
 print(f"Number of antinodes: {antinode_count}")

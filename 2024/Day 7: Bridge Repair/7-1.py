@@ -1,7 +1,15 @@
 from itertools import product
 
-with open('test.txt', 'r') as file:
+with open('7.txt', 'r') as file:
     data = file.read()
+
+def data_praser(data):
+    data_dict = {}
+    lines = data.strip().split("\n")
+    for line in lines:
+        key, values = line.split(":")
+        data_dict[int(key)] = list(map(int, values.split()))
+    return data_dict
 
 def evaluate_expression(nums, operators):
     result = nums[0]
@@ -19,11 +27,7 @@ def can_form_target(target, nums):
             return True
     return False
 
-data_dict = {}
-lines = data.strip().split("\n")
-for line in lines:
-    key, values = line.split(":")
-    data_dict[int(key)] = list(map(int, values.split()))
+data_dict = data_praser(data)
 
 total = 0
 for target, nums in data_dict.items():

@@ -1,6 +1,6 @@
 import re
 
-with open('test.txt', 'r') as file:
+with open('3.txt', 'r') as file:
     data = file.read()
 lines = data.splitlines()
 
@@ -8,17 +8,17 @@ def mul(a, b):
     return a * b
 
 result = 0
-check = 0
+check = False
+pattern = re.compile(r"mul\(\d+,\d+\)|don't|do")
 for line in lines:  
-    matches = re.findall(r"mul\(\d+,\d+\)|don\'t|do", line)
-    for i in matches:
-        if i == "don't":
-            check = 1
-            continue
-        if i == 'do':
-            check = 0
-            continue
-        if check ==1:
-            continue
-        result += eval(i)
+    matches = pattern.findall(line)
+    for match in matches:
+        if match == "don't":
+            check = True
+        elif match == 'do':
+            check = False
+        elif not check:
+            numbers = re.findall(r'\d+', match)
+            a, b = map(int, numbers)
+            result += mul(a, b)
 print(result)
