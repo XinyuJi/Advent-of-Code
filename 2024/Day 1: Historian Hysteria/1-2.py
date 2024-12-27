@@ -1,6 +1,5 @@
 with open("1.txt", 'r') as file:
-    data = file.read()
-lines = data.splitlines()
+    lines = file.read().splitlines()
 rows = [tuple(map(int, line.split())) for line in lines]
 
 count_dict = {row[0]: 0 for row in rows}

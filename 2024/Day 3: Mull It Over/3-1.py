@@ -1,8 +1,7 @@
 import re
 
 with open('3.txt', 'r') as file:
-    data = file.read()
-lines = data.splitlines()
+    lines = file.read().splitlines()
 
 def mul(a, b):
     return a * b

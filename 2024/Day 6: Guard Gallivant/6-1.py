@@ -1,6 +1,5 @@
 with open('6.txt', 'r') as file:
-    data = file.read()
-map = data.splitlines()
+    map = file.read().splitlines()
 
 directions = [(-1,0), (0,1), (1,0), (0,-1)]
 

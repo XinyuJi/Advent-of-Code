@@ -1,8 +1,7 @@
 from collections import deque
 
 with open('4.txt', 'r') as file:
-    data = file.read()
-map = data.splitlines()
+    map = file.read().splitlines()
 
 word = "XMAS"
 directions = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]

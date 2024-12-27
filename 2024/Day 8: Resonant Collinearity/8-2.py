@@ -1,8 +1,7 @@
 from collections import defaultdict
 
 with open('8.txt','r') as file:
-    data = file.read()
-map = data.splitlines()
+    map = file.read().splitlines()
 
 def extract_antennas(map):
     antennas = defaultdict(list)

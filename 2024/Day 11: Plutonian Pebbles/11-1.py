@@ -1,10 +1,9 @@
 with open('11.txt', 'r') as file:
-    data = file.read()
-input=data.split()
+    stones = file.read().split()
 
-def stone_blink(input):
+def stone_blink(stones):
     new_list = []
-    for num in input:
+    for num in stones:
         num_int = int(num)
         if num_int == 0:
             new_list.append('1')
@@ -20,10 +19,10 @@ def stone_blink(input):
                 new_list.append(str(num_int * 2024))
     return new_list
 
-def process_iterations(input, times):
+def process_iterations(stones, times):
     for _ in range(times):
-        input = stone_blink(input)
-    return input
+        stones = stone_blink(stones)
+    return stones
 
-result = process_iterations(input, 25)
+result = process_iterations(stones, 25)
 print(len(result))

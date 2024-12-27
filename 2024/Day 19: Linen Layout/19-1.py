@@ -1,6 +1,5 @@
 with open('19.txt', 'r') as file:
-    data = file.read()
-towels, designs = data.strip().split("\n\n")
+    towels, designs = file.read().strip().split("\n\n")
 towels = [towel.strip() for towel in towels.split(",")]
 designs = designs.split("\n")
 

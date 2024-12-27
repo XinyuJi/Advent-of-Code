@@ -1,6 +1,5 @@
 with open('2.txt', 'r') as file:
-    data = file.read()
-lines = data.splitlines()
+    lines = file.read().splitlines()
 rows = [tuple(map(int, line.split())) for line in lines]
 
 def is_valid(sequence):

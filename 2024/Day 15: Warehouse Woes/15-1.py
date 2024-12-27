@@ -1,6 +1,5 @@
-with open('test.txt', 'r') as file:
-    data = file.read()
-map, rules = data.strip().split("\n\n")
+with open('15.txt', 'r') as file:
+    map, rules = file.read().strip().split("\n\n")
 map = map.splitlines()
 rules = [rule.strip() for rule in rules.split() if rule.strip()]
 rules = list(''.join(rules))

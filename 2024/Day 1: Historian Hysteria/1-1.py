@@ -1,6 +1,5 @@
 with open("1.txt", 'r') as file:
-    data = file.read()
-lines = data.splitlines()
+    lines = file.read().splitlines()
 rows = [tuple(map(int, line.split())) for line in lines]
 
 sorted_by_first = sorted(rows, key=lambda x: x[0])

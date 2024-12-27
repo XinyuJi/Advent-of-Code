@@ -1,12 +1,11 @@
 from collections import defaultdict
 
 with open('11.txt', 'r') as file:
-    data = file.read()
-input=data.split()
+    stones = file.read().split()
 
-def stone_blink(input, times):
+def stone_blink(stones, times):
     input_dict = defaultdict(int)
-    for num in input:
+    for num in stones:
         input_dict[int(num)] += 1
 
     for _ in range(times):
@@ -31,5 +30,5 @@ def stone_blink(input, times):
                 input_dict.pop(k)
     return input_dict
 
-result = stone_blink(input, 75)
+result = stone_blink(stones, 75)
 print(sum(result.values()))
