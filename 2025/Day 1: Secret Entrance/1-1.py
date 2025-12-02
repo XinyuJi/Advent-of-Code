@@ -1,6 +1,3 @@
-with open('1.txt', 'r') as file:
-    data = file.read().strip().splitlines()
-
 def count_zero(rotations):
     pos = 50
     zero_count = 0
@@ -19,5 +16,8 @@ def count_zero(rotations):
 
     return zero_count
 
-password = count_zero(data)
-print(password)
+if __name__ == "__main__":
+    with open('1.txt', 'r') as file:
+        data = file.read().strip().splitlines()
+    password = count_zero(data)
+    print(password)
