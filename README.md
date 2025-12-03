@@ -5,7 +5,7 @@
 📁 [My Solutions](https://github.com/XinyuJi/Advent-of-Code/tree/master/2025/)
 🐍 Python
 
-> Just 12 days, totally manageable.🐰👨‍✈️
+> Just 12 days, totally manageable.🐰✈️
 
 <img src="Xmas/captain_bread.png" alt="Xmas" width="300" />
 
